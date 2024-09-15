@@ -1,6 +1,5 @@
-import axios, { CanceledError } from "axios";
-import { useState, useEffect } from "react";
-import axiosInstance from "../services/apiClient";
+import { useQuery } from "@tanstack/react-query";
+import APIClient from "../services/apiClient";
 
 export interface Weather {
   name: string;
@@ -24,30 +23,11 @@ export interface Weather {
 
 const useWeather = (cityName: string, units: string) => {
     const apiClient = new APIClient<Weather>(cityName, units)
+
+    return useQuery({
+        queryKey: ['weather', cityName, units],
+        queryFn: apiClient.get
+    })
 }
-//     {
-//     const [isLoading, setLoading] = useState(false);
-//     const [data, setData] = useState<Weather>();
-//     useEffect(() => {
-//         const controller = new AbortController();
-//         setLoading(true);
-//         axiosInstance
-//         .get<Weather>(`weather?q=${cityName}&units=${units}`, {
-//             signal: controller.signal,
-//         })
-//         .then((res) => {
-//             setData(res.data);
-//             setLoading(false);
-//         })
-//         .catch((err) => {
-//             if (err instanceof CanceledError) return;
-//             console.log("error : ", err);
-//             setLoading(false);
-//         });
-//     }, [cityName, units]);
-
-//     return {data, isLoading}
-
-// }
 
 export default useWeather
