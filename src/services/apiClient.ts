@@ -7,4 +7,20 @@ const axiosInstance = axios.create({
     }
 })
 
-export default axiosInstance
+class APIClient<T> {
+    endpoint: string;
+
+    constructor (cityName: string, units: string)  {
+        const url = 'weather?q='
+        this.endpoint = `${url}${cityName}&units=${units}`
+    }
+
+    get = () =>  {
+        return axiosInstance
+        .get<T>(this.endpoint)
+        .then(res => res.data)
+
+    }
+}
+
+export default APIClient
