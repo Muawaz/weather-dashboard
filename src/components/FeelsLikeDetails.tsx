@@ -5,10 +5,9 @@ import IconTextAttribute from "./IconTextAttribute";
 import useWeather from "../hooks/useWeather";
 
 const FeelsLikeDetails = () => {
-  useWeather()
   return (
     <Box>
-      <Text>Feels like {weather.main.feels_like}&deg;</Text>
+      <Text>Feels like 47&deg;</Text>
       <HStack>
         <IconTextAttribute value={37} remarks="&deg;">
           <TiArrowUpThick />

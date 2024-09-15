@@ -18,15 +18,16 @@ export interface Weather {
   ];
 }
 
-
-  
-
 const useWeather = (cityName: string, units: string) => {
-    const apiClient = new APIClient<Weather>(cityName, units)
+    const apiClient = new APIClient<Weather>(cityName)
 
     return useQuery({
         queryKey: ['weather', cityName, units],
-        queryFn: apiClient.get
+        queryFn: () => apiClient.get({
+            params: {
+                units: units
+            }
+        })
     })
 }
 
