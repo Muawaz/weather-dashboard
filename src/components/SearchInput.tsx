@@ -8,13 +8,11 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { MdMyLocation } from "react-icons/md";
+import useWeatherQueryStore from "../store";
 
-interface Props {
-  onSearch: (searchTerm: string) => void;
-}
-
-const SearchInput = ({ onSearch }: Props) => {
+const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);
+  const onSearch = useWeatherQueryStore((s) => s.setCityName);
 
   return (
     <Box marginTop={20}>

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/apiClient";
+import useWeatherQueryStore from "../store";
 
 export interface Weather {
   name: string;
@@ -18,14 +19,14 @@ export interface Weather {
   ];
 }
 
-const useWeather = (cityName: string, units: string) => {
-    const apiClient = new APIClient<Weather>(cityName)
-
+const useWeather = () => {
+    const weatherQuery = useWeatherQueryStore(s => s.weatherQuery)    
+    const apiClient = new APIClient<Weather>(weatherQuery.cityName!)
     return useQuery({
-        queryKey: ['weather', cityName, units],
+        queryKey: ['weather', weatherQuery.cityName, weatherQuery.units],
         queryFn: () => apiClient.get({
             params: {
-                units: units
+                units: weatherQuery.units
             }
         })
     })

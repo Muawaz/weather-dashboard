@@ -1,13 +1,11 @@
 import { HStack, Switch, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import useWeatherQueryStore from "../store";
 
-interface Props {
-  units: string;
-  onSetUnits: (unit: string) => void;
-}
-
-const LabelSwitch = ({ units, onSetUnits }: Props) => {
+const LabelSwitch = () => {
   const [checked, setChecked] = useState(false);
+  const units = useWeatherQueryStore((s) => s.weatherQuery.units);
+  const onSetUnits = useWeatherQueryStore((s) => s.setUnits);
 
   return (
     <HStack justifyContent="space-between" marginX={3}>
