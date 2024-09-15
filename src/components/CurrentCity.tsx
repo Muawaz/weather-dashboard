@@ -14,7 +14,7 @@ const CurrentCity = () => {
           {data.name}
         </Text>
         <WeatherIcons weather_id={data.weather[0].id} />
-        <Text>{data.weather[0].main}</Text>
+        <Text fontWeight="bold">{data.weather[0].main}</Text>
       </Box>
       <Text fontSize={80}>{data.main.temp.toFixed(0)}&deg;</Text>
     </HStack>

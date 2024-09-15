@@ -7,7 +7,7 @@ function App() {
   // const [searchText, setSearchText] = useState("Lahore");
   return (
     <Grid>
-      <GridItem bg="dodgerblue" padding="10px">
+      <GridItem bg="dodgerblue" paddingRight={2} paddingLeft={2}>
         {/* <Show above="lg"> */}
         <Box>
           <NavBar />

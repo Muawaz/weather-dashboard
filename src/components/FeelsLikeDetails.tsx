@@ -1,34 +1,55 @@
-import { Box, HStack, Text } from "@chakra-ui/react";
+import { Box, HStack, Spinner, Text } from "@chakra-ui/react";
 import { TiArrowDownThick, TiArrowUpThick } from "react-icons/ti";
-import { WiCloudyWindy, WiHumidity } from "react-icons/wi";
-import IconTextAttribute from "./IconTextAttribute";
+import { WiBarometer, WiCloudyWindy, WiHumidity } from "react-icons/wi";
 import useWeather from "../hooks/useWeather";
 
 const FeelsLikeDetails = () => {
+  const { data, isLoading } = useWeather();
+
+  if (!data) return <Spinner />;
+  if (isLoading) return <Spinner />;
   return (
-    <Box>
-      <Text>Feels like 47&deg;</Text>
-      <HStack>
-        <IconTextAttribute value={37} remarks="&deg;">
-          <TiArrowUpThick />
-        </IconTextAttribute>
+    <Box marginLeft={10} margin={5}>
+      <Text>Feels like {data.main.feels_like}&deg;</Text>
 
-        <IconTextAttribute value={29} remarks="&deg;">
-          <TiArrowDownThick />
-        </IconTextAttribute>
+      <HStack spacing={10}>
+        <Box>
+          <HStack marginY={5}>
+            <TiArrowDownThick />
+            <Text>{data.main.temp_min}&deg;</Text>
+          </HStack>
+          <HStack>
+            <WiHumidity />
+            <Text fontWeight="bold">Humidity</Text>
+          </HStack>
+          <HStack>
+            <WiCloudyWindy />
+            <Text fontWeight="bold">Wind</Text>
+          </HStack>
+          <HStack>
+            <WiBarometer />
+            <Text fontWeight="bold">Pressure</Text>
+          </HStack>
+        </Box>
+        <Box>
+          <HStack marginY={5}>
+            <TiArrowUpThick />
+            <Text>{data.main.temp_max}&deg;</Text>
+          </HStack>
+          <HStack>
+            <Text>{data.main.humidity}</Text>
+            <Text>%</Text>
+          </HStack>
+          <HStack>
+            <Text>{data.wind.speed}</Text>
+            <Text>Kph</Text>
+          </HStack>
+          <HStack>
+            <Text>{data.main.pressure}</Text>
+            <Text>hPa</Text>
+          </HStack>
+        </Box>
       </HStack>
-
-      <IconTextAttribute title="Humidity" value={29} remarks="%">
-        <WiHumidity />
-      </IconTextAttribute>
-
-      <IconTextAttribute title="Wind" value={9} remarks="Kph">
-        <WiCloudyWindy />
-      </IconTextAttribute>
-
-      <IconTextAttribute title="Pressure" value={1017} remarks="hPa">
-        <WiHumidity />
-      </IconTextAttribute>
     </Box>
   );
 };

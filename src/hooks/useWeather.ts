@@ -10,7 +10,11 @@ export interface Weather {
     temp_min: number;
     temp_max: number;
     pressure: number;
+    humidity: number
   };
+  wind: {
+    speed: number
+  }
   weather: [
     {
       id: number;

@@ -1,4 +1,4 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { Box, HStack, StackDivider, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
 interface Props {
@@ -10,11 +10,19 @@ interface Props {
 
 const IconTextAttribute = ({ children, title, value, remarks }: Props) => {
   return (
-    <HStack>
-      {children}
-      {title ? <Text fontWeight="bold">{title}</Text> : ""}
-      <Text>{value}</Text>
-      {remarks ? <Text>{remarks}</Text> : ""}
+    <HStack
+      divider={<StackDivider marginRight={20} />}
+      spacing={30}
+      className="d-flex"
+    >
+      <HStack>
+        {children}
+        <Text>{title}</Text>
+      </HStack>
+      <HStack>
+        <Text>{value}</Text>
+        <Text>{remarks}</Text>
+      </HStack>
     </HStack>
   );
 };
