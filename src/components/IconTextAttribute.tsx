@@ -1,4 +1,4 @@
-import { Box, HStack, StackDivider, Text } from "@chakra-ui/react";
+import { HStack, StackDivider, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
 interface Props {

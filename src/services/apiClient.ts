@@ -1,9 +1,12 @@
 import axios, { AxiosRequestConfig } from "axios";
+const apiKey = import.meta.env.VITE_API_KEY;
+
 
 const axiosInstance = axios.create({
     baseURL:"https://api.openweathermap.org/data/2.5",
     params: {
-        appid: "37bf712b4a2574d0115543929236cae2",
+        appid: apiKey
+        ,
     }
 })
 

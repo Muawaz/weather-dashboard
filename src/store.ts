@@ -14,7 +14,7 @@ interface WeatherQueryStore {
 
 const useWeatherQueryStore = create<WeatherQueryStore>(set => ({
     weatherQuery: {
-        cityName: "Lahore",
+        cityName: "Gilgit",
         units: 'imperial'
     },
     setCityName: (text) => set( store => ({weatherQuery: {...store.weatherQuery, cityName: text}})),

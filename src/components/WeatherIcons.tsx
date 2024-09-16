@@ -3,13 +3,14 @@ import { IconType } from "react-icons";
 import {
   WiCloudy,
   WiCloudyGusts,
+  WiDayHaze,
   WiDaySunny,
   WiFog,
   WiNightAltPartlyCloudy,
   WiNightPartlyCloudy,
   WiRainMix,
   WiSmoke,
-  WiThunderstorm
+  WiThunderstorm,
 } from "react-icons/wi";
 
 interface Props {
@@ -24,6 +25,7 @@ const WeatherIcons = ({ weather_id }: Props) => {
     500: WiRainMix,
     701: WiFog,
     711: WiSmoke,
+    721: WiDayHaze,
     800: WiDaySunny,
     801: WiCloudyGusts,
     802: WiNightAltPartlyCloudy,
