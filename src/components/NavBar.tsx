@@ -4,7 +4,7 @@ import ColorSwitchMode from "./ColorSwitchMode";
 const NavBar = () => {
   return (
     <HStack padding="10px" justifyContent="space-between">
-      <Heading>ReactWeather</Heading>
+      <Heading color='whitesmoke'>ReactWeather</Heading>
       <ColorSwitchMode />
     </HStack>
   );

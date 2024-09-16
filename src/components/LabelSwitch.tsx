@@ -23,6 +23,7 @@ const LabelSwitch = () => {
           ".chakra-switch__track::after": {
             content: checked ? '"C"' : '"F"',
             position: "absolute",
+            color: "black",
             top: "14px", // calc half of height
             left: checked ? "15%" : "70%",
             fontWeight: "bold",
